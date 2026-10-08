@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My AI Chat</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f1115;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 18px;
+      background: #171a21;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .msg {
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 15px;
+      max-width: 85%;
+      line-height: 1.5;
+    }
+
+    .user {
+      background: #2563eb;
+      margin-left: auto;
+    }
+
+    .ai {
+      background: #242832;
+      margin-right: auto;
+    }
+
+    .bottom {
+      display: flex;
+      padding: 10px;
+      background: #171a21;
+      gap: 8px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #292e38;
+      color: white;
+      outline: none;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 0 18px;
+      background: #22c55e;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>🤖 My AI Chat</header>
+
+  <div id="chat">
+    <div class="msg ai">
+      नमस्ते! 👋 मैं आपका AI Chat हूँ। मुझसे कुछ भी पूछो।
+    </div>
+  </div>
+
+  <div class="bottom">
+    <input id="input" placeholder="यहाँ अपना सवाल लिखें...">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("input");
+      const chat = document.getElementById("chat");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      chat.innerHTML += `
+        <div class="msg user">${text}</div>
+      `;
+
+      input.value = "";
+
+      setTimeout(() => {
+        chat.innerHTML += `
+          <div class="msg ai">
+            आपका सवाल मिला 😊<br>
+            अभी मेरा AI brain connect करना बाकी है।
+          </div>
+        `;
+
+        chat.scrollTop = chat.scrollHeight;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
